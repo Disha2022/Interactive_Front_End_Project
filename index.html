@@ -1,35 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <title>MyFoodPlace</title>
 </head>
+
 <body>
-    <header>
-<h1> Search for Restaurents </h1>
-    </header>
-    <main class="columns">
-  <section id="search" class="searchfood column is-one-fifth">     
- <form>
-    <input />
-        <button>Search</button>
-    </form>
-</section> 
 
-<section id="myfood" class="foods column auto">
+    <section class="hero">
+        <header>
+            <h1> Search for Restaurents </h1>
+        </header>
+    </section>
+    <main class="grid grid-cols-5">
+        <section id="search" class="searchfood">
+            <div class="row-1">
+                <form>
+                    <input type="text" class="input" id="forminput" />
+                    <button type="submit" class="rounded">Search</button>
+                </form>
+            </div>
+            <!----------weather-->
+            <div class="weather" id="myweather">
+                <h2> Today's weather!</h2>
+                <p> Temperature</p>
+                <p> Wind Speed</p>
+                <p> Humidity</p>
+                <p> Cloud</p>
+            </div>
+        </section>
 
+        <section id="myfood" class="foods shadow-md col-span-3">
+            <!---list restaurents-->
+            <ul>
+                <li>
+                    <h3>Restaurant 1</h3>
+                    <p> blah blah</p>
+                </li>
+                <li>
+                    <h3>Restaurant 2</h3>
+                    <p> blah blah</p>
+                </li>
+                <li>
+                    <h3>Restaurant 1</h3>
+                    <p> blah blah</p>
+                </li>
+                <li>
+                    <h3>Restaurant 2</h3>
+                    <p> blah blah</p>
+                </li>
+            </ul>
 
+        </section>
+        <section id="myPicks" class="foodlove">
+            <h2>My Picks!</h2>
 
-</section>
-<Section id="myPicks" class="foodlove column is-one-fifth">My Picks</Section>
+            <ul>
+                <li>
+                    <h3>Restaurant 1</h3>
+                    <p> blah blah</p>
+                </li>
+                <li>
+                    <h3>Restaurant 2</h3>
+                    <p> blah blah</p>
+                </li>
+                <li>
+                    <h3>Restaurant 1</h3>
+                    <p> blah blah</p>
+                </li>
+                <li>
+                    <h3>Restaurant 2</h3>
+                    <p> blah blah</p>
+                </li>
+            </ul>
+        </section>
 
     </main>
-<footer>
+    <footer>
 
-</footer>
+    </footer>
 </body>
+
 </html>
