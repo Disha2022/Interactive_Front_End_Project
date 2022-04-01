@@ -1,0 +1,26 @@
+header{
+    font-size: 32px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(41, 159, 188);
+    padding: 2%;
+    text-align: center;
+    flex-wrap: wrap;
+    color: white;
+    margin-bottom: 1%;
+
+}
+
+
+.searchfood {
+    background-color: aquamarine;
+    margin-bottom: 1%;
+}
+.foodlove {
+    background-color: aquamarine;
+    margin-bottom: 1%;
+}
+
+.foods {
+    background-color: rgb(37, 79, 152);
+    margin-bottom: 1%;
+}
