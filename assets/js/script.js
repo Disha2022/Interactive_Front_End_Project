@@ -1,4 +1,4 @@
-weather = JSON.parse(localStorage.getItem("test1"));
+
 
 // retreives info from the weather api and then passes it to fill weather data.
 var DisplayWeather = function(lat, long){
@@ -16,11 +16,20 @@ var DisplayWeather = function(lat, long){
 var  FillWeatherData = function(data){
     var weatherEl = $("#myweather");
     dataField =  weatherEl.children("p");
+    //pick the correct cloud img.
+    var cloudInfo = data.weather[0]
+    var CloudEl = $("#cloud");
+    var cloudimg = "http://openweathermap.org/img/wn/"
+        +cloudInfo.icon+"@2x.png";
+    CloudEl.attr({
+        src: cloudimg,
+       alt: cloudInfo.description
+    });
 
     FillDataField(dataField[0],data.temp +String.fromCharCode(176)+"F"); 
     FillDataField(dataField[1],data.wind_speed +" mph");
     FillDataField(dataField[2],data.humidity+"%");
-    FillDataField(dataField[3],data.clouds);
+
 }
 
 // fills each individual field with the given data
