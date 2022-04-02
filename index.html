@@ -12,25 +12,26 @@
 </head>
 
 <body>
-
-    <header>
+    <section id="search">
+    
         <h1> Restaurant Finder </h1>
-    </header>
-
+    
+   
+        <!-----Form element------->
+        <div class="row-1 searchfood">
+            <form>
+                <input type="text" class="input" id="forminput" />
+                <button type="submit" class="rounded">Search</button>
+            </form>
+        </div>
+</section>
     <article class="hero"> </article>
     <main class="grid grid-cols-5">
-        <section id="search" class="searchfood">
-            <!-----Form element------->
-            <div class="row-1">
-                <form>
-                    <input type="text" class="input" id="forminput" />
-                    <button type="submit" class="rounded">Search</button>
-                </form>
-            </div>
+        
             <!----------weather------->
             <div class="weather shadow-lg" id="myweather">
-                <h2>Date</h2>
-                <h2> Today's weather!</h2>
+                <h2>Today's weather!</h2>
+                <p> Date</p>
                 <p> Temperature</p>
                 <p> Wind Speed</p>
                 <p> Humidity</p>
