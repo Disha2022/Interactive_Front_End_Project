@@ -5,15 +5,21 @@ var searchForm = $('#search-form')
 var cancelBtn = $('#cancel-btn')
 var mapArea = document.getElementById("map")
 var searchInput = document.getElementById('user-search')
+var infowindow;
+var map;
+var service;
+
+
 
 var request = {
     query: '',
-    fields: ['name', 'geometry', 'rating']
+    fields: ['name', 'geometry', 'rating'],
+    types: ['restaurant']
 }
 
 function addSearchInput(){
     var Location= searchInput.value
-   request.query= Location
+   address= Location
 }
 
 function initGoogle() {
@@ -34,17 +40,47 @@ function initGoogle() {
             location.lng = loc.coords.longitude;
 
             map = new google.maps.Map(mapArea, options);
+            infowindow= new google.maps.InfoWindow();
         },
         (err) => {
             console.log('user blocked')
             map = new google.maps.Map(mapArea, options);
+            infowindow= new google.maps.InfoWindow()
         })
     } else{
         console.log('geolocation not supported boo!')
         map = new google.maps.Map(mapArea, options)
+        infowindow= new google.maps.InfoWindow()
     }
     
 }
+ 
+function SearchLocation(){
+    service = new google.maps.places.PlacesService(map);
+    service.findPlaceFromQuery(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+          map.setCenter(results[0].geometry.location);
+        }
+    })
+}
+
+function createMarker(place) {
+    if (!place.geometry || !place.geometry.location) return;
+  
+    const marker = new google.maps.Marker({
+      map,
+      position: place.geometry.location,
+    });
+  
+    google.maps.event.addListener(marker, "click", () => {
+      infowindow.setContent(place.name);
+      infowindow.open(map);
+    });
+  }
+  
 
 
 
@@ -64,4 +100,5 @@ searchInput.addEventListener('keyup', addSearchInput)
 searchBtn.on('click', AppearModal)
 closeBtn.on('click', DissapearModal)
 cancelBtn.on('click', DissapearModal)
+searchBtn.on('click', SearchLocation)
 
