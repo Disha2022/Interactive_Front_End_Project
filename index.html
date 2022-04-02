@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxOSovrpPjdZaq-neCo8Qe3zUwLVK0Xz0&libraries=places&callback=initGoogle">
+    </script>   
     <!-- <script src="https://unpkg.com/tailwindcss-jit-cdn"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -25,6 +28,7 @@
     </header>
     <article class="hero"> </article>
     <main class="grid grid-cols-5">
+
         <!-- modal element -->
         <div class="bg-black bg-opacity-50 absolute inset-0 justify-center items-center hidden" id="overlay">
             <div class="bg-gray-200 max-w-sm py-2 px-3 rounded shadow-xl text-gray-800">
@@ -35,10 +39,8 @@
                     1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 
                     1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </div>
-                    <div class="mt-2 text-sm">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-                    </p>
+                    <div class="mt-3 h-96 w-80" id="map" >
+                    
                     </div>
                     <div class="mt-3 flex justify-end space-x-3">
                         <button class="px-3 py-1 rounded hover:bg-blue-200 hove:bg-opacity-50 hover:text-blue-700" id="cancel-btn">Cancel</button>
