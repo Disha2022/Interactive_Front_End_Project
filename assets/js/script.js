@@ -14,7 +14,25 @@ function initGoogle() {
         center: location,
         zoom: 9
     }
-    map = new google.maps.Map(mapArea, options)
+
+    if(navigator.geolocation) {
+        console.log('geolocation is here!');
+
+        navigator.geolocation.getCurrentPosition((loc) => {
+            location.lat = loc.coords.latitude;
+            location.lng = loc.coords.longitude;
+
+            map = new google.maps.Map(mapArea, options);
+        },
+        (err) => {
+            console.log('user blocked')
+            map = new google.maps.Map(mapArea, options);
+        })
+    } else{
+        console.log('geolocation not supported boo!')
+        map = new google.maps.Map(mapArea, options)
+    }
+    
 }
 
 searchForm.submit(function(e){
