@@ -17,10 +17,9 @@ var  FillWeatherData = function(data){
     var weatherEl = $("#myweather");
     dataField =  weatherEl.children("p");
 
-    FillDataField(dataField[0],data.temp); 
-    dataField[0].textContent += String.fromCharCode(176);
-    FillDataField(dataField[1],data.wind_speed);
-    FillDataField(dataField[2],data.humidity);
+    FillDataField(dataField[0],data.temp +String.fromCharCode(176)+"F"); 
+    FillDataField(dataField[1],data.wind_speed +" mph");
+    FillDataField(dataField[2],data.humidity+"%");
     FillDataField(dataField[3],data.clouds);
 }
 
@@ -36,7 +35,7 @@ var FillDataField = function(element, data)
         element.textContent += data;
 }
 
-//DisplayWeather(0,0);
+DisplayWeather(0,0);
 
 
 
