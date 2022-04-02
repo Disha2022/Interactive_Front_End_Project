@@ -1,9 +1,13 @@
 #search {
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     text-align: right;
     justify-content: space-between;
     margin-top: 1%;
+    padding: 0 1% 1% 1%;
+    margin-right:2%;
+    align-items:center;
 }
 
 #search h1 {
@@ -11,9 +15,13 @@
     display: inline;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     align-items: left;
-    margin-left: 2%;
+    /* margin-left: 2%; */
     color: rgb(38, 127, 132);
     /* padding-top: 1%;    */
+}
+
+#search form {
+display:flex;
 }
 
 #search button {
