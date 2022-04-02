@@ -6,23 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://unpkg.com/tailwindcss-jit-cdn"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>MyFoodPlace</title>
 </head>
 
 <body>
-    <section id="search">
+    <header id="search">
         <h1> Restaurant Finder </h1>
         <!-----Form element------->
         <div class="searchfood col-span-2">
-            <form>
+            <form id="search-form">
                 <input type="text" class="input" id="forminput" placeholder="Location" />
-                <button type="submit" class="rounded">Search</button>
+                <button type="submit" class="rounded" id="search-btn">Search</button>
             </form>
-        </div>
-    </section>
+        <!-- </div> -->
+    </header>
     <article class="hero"> </article>
     <main class="grid grid-cols-5">
+        <!-- modal element -->
+        <div class="bg-black bg-opacity-50 absolute inset-0 justify-center items-center hidden" id="overlay">
+            <div class="bg-gray-200 max-w-sm py-2 px-3 rounded shadow-xl text-gray-800">
+                <div class="flex justify-between items-center">
+                <h3 class="text-lg font-bold">Confirm Address Search</h3>
+                <svg class="w-6 h-6 cursor-pointer p-1 bg-grey-100 rounded-full hover:bg-gray-500" id="close-modal" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 
+                    1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 
+                    1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </div>
+                    <div class="mt-2 text-sm">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+                    </p>
+                    </div>
+                    <div class="mt-3 flex justify-end space-x-3">
+                        <button class="px-3 py-1 rounded hover:bg-blue-200 hove:bg-opacity-50 hover:text-blue-700" id="cancel-btn">Cancel</button>
+                        <button class="px-3 py-1 rounded bg-blue-700 text-white hover:bg-blue-600">Confirm</button>
+                    </div>
+                
+            </div>
+        </div>
+        <!-- end of modal element -->
 
         <!----------weather------->
         <div class="weather shadow-lg" id="myweather">
@@ -82,7 +107,7 @@
         </section>
 
     </main>
-
+<script src="./assets/js/script.js"></script>
 </body>
 
 </html>
