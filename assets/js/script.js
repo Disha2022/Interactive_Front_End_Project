@@ -4,6 +4,17 @@ var searchBtn = $('#search-btn')
 var searchForm = $('#search-form')
 var cancelBtn = $('#cancel-btn')
 var mapArea = document.getElementById("map")
+var searchInput = document.getElementById('user-search')
+
+var request = {
+    query: '',
+    fields: ['name', 'geometry', 'rating']
+}
+
+function addSearchInput(){
+    var Location= searchInput.value
+   request.query= Location
+}
 
 function initGoogle() {
     var location = {
@@ -35,6 +46,8 @@ function initGoogle() {
     
 }
 
+
+
 searchForm.submit(function(e){
     e.preventDefault();
 })
@@ -45,6 +58,10 @@ function AppearModal(){
 function DissapearModal(){
     overlay.removeClass('flex').addClass('hidden')
 }
+
+
+searchInput.addEventListener('keyup', addSearchInput)
 searchBtn.on('click', AppearModal)
 closeBtn.on('click', DissapearModal)
 cancelBtn.on('click', DissapearModal)
+
