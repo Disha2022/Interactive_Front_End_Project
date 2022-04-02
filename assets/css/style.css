@@ -1,15 +1,10 @@
 header{
-    font-size: 64px;
+    font-size: 250%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
+    text-align: justify;
     flex-wrap: wrap;
     color: rgb(12, 77, 27);
- 
-    
-
 }
-
-
 
 .hero {
     display: flex;
@@ -18,10 +13,9 @@ header{
     background-image: url('../images/pexels-ella-olsson-1640777.jpg');
     background-size: cover;
     position: relative;
-    padding: 1%;
+    padding-top: 6%;
+    padding-bottom: 6%;
     margin-bottom: 1%;
-    padding-bottom: 5%;
-    padding-top: 5%;
   }
 
 .searchfood {
@@ -41,17 +35,20 @@ header{
     margin-bottom:0.05%;
     background-color: rgb(64, 86, 20);
     color: white;
+   
     
 }
 .row-1 {
     padding: 2%;
+   
 }
 :hover button {
 background-color: rgb(10, 81, 39);
 }
 .input {
     border: rgb(126, 158, 213);
-    border-style:outset
+    border-style:outset;
+    padding: 1%
 }
 
 .foodlove {
@@ -60,6 +57,8 @@ background-color: rgb(10, 81, 39);
     background-color: rgb(48, 164, 193);
     margin-bottom: 1%;
     color: white;
+    padding: 2%;
+    margin: 2%;
     
 }
 
@@ -69,7 +68,8 @@ background-color: rgb(10, 81, 39);
     background-color:rgb(126, 158, 213);
     margin-bottom: 1%;
     color: white;
-    
+    padding-right: 2%;
+    margin: 2%;
 }
 .weather {
     font-size: 18px;
@@ -77,4 +77,5 @@ background-color: rgb(10, 81, 39);
     background-color:rgb(149, 218, 233);
     margin-bottom: 1%;
     color: white;
+   
 }
