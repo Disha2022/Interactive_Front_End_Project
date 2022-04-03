@@ -1,81 +1,148 @@
-header{
-    font-size: 64px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
+#search {
+    max-width: 100%;
+    display: flex;
     flex-wrap: wrap;
-    color: rgb(12, 77, 27);
- 
-    
-
+    text-align: right;
+    justify-content: space-between;
+    margin-top: 1%;
+    padding: 0 1% 1% 1%;
+    margin-right:2%;
+    align-items:center;
 }
 
+#search h1 {
+    font-size: 200%;
+    display: inline;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: left;
+    /* margin-left: 2%; */
+    color: rgb(38, 127, 132);
+    /* padding-top: 1%;    */
+}
 
+#search form {
+display:flex;
+}
+
+#search button {
+    font-size: large;
+    padding-right: 4%;
+    padding-left: 4%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    /* margin-bottom:0.05%; */
+    background-color: rgb(38, 127, 132);
+    color: white;
+}
 
 .hero {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     background-image: url('../images/pexels-ella-olsson-1640777.jpg');
     background-size: cover;
     position: relative;
-    padding: 1%;
+    padding-bottom: 25%;
     margin-bottom: 1%;
-    padding-bottom: 5%;
-    padding-top: 5%;
-  }
+}
 
 .searchfood {
-    font-size: 16px;
-    padding: 5%;
-    text-align: center;
-    /* background-color: rgb(44, 128, 134); */
+
+    align-items: right;
     margin-bottom: 1%;
-    
+
 }
 
-#search button{
+
+.input {
+    border: rgb(38, 127, 132);
+    border-style: outset;
     padding-right: 3%;
     padding-left: 3%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    margin-bottom:0.05%;
-    background-color: rgb(64, 86, 20);
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    text-align: center;
+    margin-right: 1%;
+
+}
+
+.weather {
+    font-size: 18px;
+    text-align: center;
+    background-color: white;
+    margin-bottom: 1%;
     color: white;
-    
+    margin-left: 2%;
+    margin-right: 2%;
+
 }
-.row-1 {
-    padding: 2%;
+
+.weather h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(38, 127, 132);
+    padding-bottom: 8%;
+    margin-bottom: 2%;
+    margin-right: 1%;
+    text-align: center;
+    background-color: white;
+
 }
-:hover button {
-background-color: rgb(10, 81, 39);
+.weather p {
+    color: white;
+    background-color: rgb(91, 210, 188);
+    margin-right: 1%;
 }
-.input {
+
+.foods {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 1%;
+    color: white;
+    padding-right: 1%;
+    margin-right: 0.5%;
+    margin-left: 1%;
+}
+
+.foods ul li {
+    background-color: rgb(91, 210, 188);
+    margin-bottom: 1%;
+    margin-left: 1%;
+
+}
+
+.foods h2 {
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(38, 127, 132);
+    padding-bottom: 0.5%;
+    margin-bottom: 1%;
+    text-align: center;
     border: rgb(126, 158, 213);
-    border-style:outset
 }
 
 .foodlove {
     font-size: 18px;
     text-align: center;
-    background-color: rgb(48, 164, 193);
-    margin-bottom: 1%;
+    background-color: white;
     color: white;
-    
+    margin-bottom: 1%;
+    margin-right: 2%;
+    padding-left: 1%;
+    margin-left: 0.5%;
+
 }
 
-.foods {
-    font-size: 24px;
-    text-align: center;
-    background-color:rgb(126, 158, 213);
+.foodlove h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(38, 127, 132);
+    padding-bottom: 9%;
     margin-bottom: 1%;
-    color: white;
-    
+    background-color: white;
 }
-.weather {
-    font-size: 18px;
-    text-align: center;
-    background-color:rgb(149, 218, 233);
+
+.foodlove ul li {
+    background-color: rgb(91, 210, 188);
     margin-bottom: 1%;
+    margin-left: 2%;
     color: white;
 }
 #cloud{
