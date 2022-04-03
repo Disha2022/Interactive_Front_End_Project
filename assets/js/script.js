@@ -11,7 +11,7 @@ var request ={
     type: ['restaurant']
 };
 
-
+// Searches for restaurants within a radius around a coordinate
 function searchForAddress(){
 
 
@@ -36,13 +36,12 @@ function searchForAddress(){
     }
 }
 
-
+// Sorts results by rating biggest to smallest
     function displayResults(){
     results.filter(result => result.rating)
     .sort((a, b) => a.rating > b.rating ? -1 : 1)
     .forEach(result => {
-        places.innerHTML += `<li id="copy">${result.name} - ${result.rating}<button type="button" class="list-btn"><img src='./assets/images/heart.png'></button></li>`
-
+        places.innerHTML += `<li>${result.name} - <span class="text-yellow-200">Rating: ${result.rating}&#9734;</span><button type="button" class="list-btn"><img src='./assets/images/heart.png'></button></li>`
     })
 }
 }
