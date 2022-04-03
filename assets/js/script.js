@@ -41,7 +41,7 @@ function searchForAddress(){
     results.filter(result => result.rating)
     .sort((a, b) => a.rating > b.rating ? -1 : 1)
     .forEach(result => {
-        places.innerHTML += `<li>${result.name} - ${result.rating}</li>`
+        places.innerHTML += `<li>${result.name} - <span class="text-yellow-200">Rating: ${result.rating}&#9734;</span></li>`
     })
 }
 }
