@@ -11,7 +11,7 @@ var request ={
     type: ['restaurant']
 };
 
-
+// Searches for restaurants within a radius around a coordinate
 function searchForAddress(){
 
 
@@ -36,12 +36,14 @@ function searchForAddress(){
     }
 }
 
-
+// Sorts results by rating biggest to smallest
     function displayResults(){
+    DisplayWeather(request.location.lat,request.location.lng);
+
     results.filter(result => result.rating)
     .sort((a, b) => a.rating > b.rating ? -1 : 1)
     .forEach(result => {
-        places.innerHTML += `<li>${result.name} - ${result.rating}</li>`
+        places.innerHTML += `<li>${result.name} - <span class="text-yellow-200">Rating: ${result.rating}&#9734;</span><button type="button" class="list-btn"><img src='./assets/images/heart.png'></button></li>`
     })
 }
 }
@@ -125,7 +127,7 @@ var FillDataField = function(element, data)
         element.textContent += data;
 }
 
-//DisplayWeather(0,0);
+DisplayWeather(request.location.lat,request.location.lng);
 
 searchInput.addEventListener('keyup', insertModalAddress)
 confirmBtn.on('click', searchForAddress)
@@ -135,3 +137,9 @@ closeBtn.on('click', DissapearModal)
 cancelBtn.on('click', DissapearModal)
 
 // -----------------My Picks Section: Add restaurants for selection-------------------------
+// $( "#btn-list" ).click(function() {
+//     var myPick = $(function(){
+//             $('#copy').clone().appendTo('#mypicks');
+//         });
+    
+//   });
