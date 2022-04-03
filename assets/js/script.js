@@ -34,7 +34,7 @@ function displayResults(){
     results.filter(result => result.rating)
     .sort((a, b) => a.rating > b.rating ? -1 : 1)
     .forEach(result => {
-        places.innerHTML += `<li>${result.name} - ${result.rating}<button type="button" class="list-btn"><img src='./assets/images/heart.png'></button></li>`
+        places.innerHTML += `<li id="copy">${result.name} - ${result.rating}<button type="button" class="list-btn"><img src='./assets/images/heart.png'></button></li>`
 
     })
 }
@@ -108,3 +108,9 @@ closeBtn.on('click', DissapearModal)
 cancelBtn.on('click', DissapearModal)
 
 // -----------------My Picks Section: Add restaurants for selection-------------------------
+// $( "#btn-list" ).click(function() {
+//     var myPick = $(function(){
+//             $('#copy').clone().appendTo('#mypicks');
+//         });
+    
+//   });
