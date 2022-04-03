@@ -52,6 +52,10 @@ display:flex;
 
 }
 
+ol {
+    background-color: rgb(91, 210, 188);
+}
+
 
 .input {
     border: rgb(38, 127, 132);
