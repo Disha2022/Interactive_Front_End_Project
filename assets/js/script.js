@@ -35,15 +35,15 @@ function displayResults(){
         places.innerHTML += `<li>${result.name} - ${result.rating}</li>`
     })
 }
-
-
-
+ 
 function addSearchInput(){
     var Location= searchInput.value
 
 }
 
-
+searchForm.submit(function(e){
+    e.preventDefault();
+})
 
 function AppearModal(){
         overlay.removeClass('hidden').addClass('flex')
