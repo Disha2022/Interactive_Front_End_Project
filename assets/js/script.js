@@ -38,6 +38,8 @@ function searchForAddress(){
 
 // Sorts results by rating biggest to smallest
     function displayResults(){
+    DisplayWeather(request.location.lat,request.location.lng);
+
     results.filter(result => result.rating)
     .sort((a, b) => a.rating > b.rating ? -1 : 1)
     .forEach(result => {
@@ -125,7 +127,7 @@ var FillDataField = function(element, data)
         element.textContent += data;
 }
 
-//DisplayWeather(0,0);
+DisplayWeather(request.location.lat,request.location.lng);
 
 searchInput.addEventListener('keyup', insertModalAddress)
 confirmBtn.on('click', searchForAddress)
