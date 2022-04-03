@@ -1,39 +1,46 @@
-
 var overlay = $('#overlay')
 var closeBtn = $('#close-modal')
 var searchBtn = $('#search-btn')
 var searchForm = $('#search-form')
 var cancelBtn = $('#cancel-btn')
 var mapArea = document.getElementById("map")
+var searchInput = document.getElementById('user-search');
 
-function initGoogle() {
-    var location = {
-        lat: 40.000,
-        lng: -79.000
+
+const request ={
+    location: new google.maps.LatLng(51.5287352, -0.3817841),
+    radius: 5000,
+    type: ['restaurant']
+};
+const results = [];
+const places = document.getElementById('places')
+const service = new google.maps.places.PlacesService(places);
+
+service.nearbySearch(request, callback);
+
+function callback(response, status, pagination) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+        results.push(...response);
     }
-    var options = {
-        center: location,
-        zoom: 9
+
+    if (pagination.hasNextPage){
+        setTimeout(() => pagination.nextPage(), 2000);
+    } else {
+        displayResults();
     }
+}
 
-    if(navigator.geolocation) {
-        console.log('geolocation is here!');
+function displayResults(){
+    results.filter(result => result.rating)
+    .sort((a, b) => a.rating > b.rating ? -1 : 1)
+    .forEach(result => {
+        places.innerHTML += `<li>${result.name} - ${result.rating}</li>`
+    })
+}
+ 
+function addSearchInput(){
+    var Location= searchInput.value
 
-        navigator.geolocation.getCurrentPosition((loc) => {
-            location.lat = loc.coords.latitude;
-            location.lng = loc.coords.longitude;
-
-            map = new google.maps.Map(mapArea, options);
-        },
-        (err) => {
-            console.log('user blocked')
-            map = new google.maps.Map(mapArea, options);
-        })
-    } else{
-        console.log('geolocation not supported boo!')
-        map = new google.maps.Map(mapArea, options)
-    }
-    
 }
 
 searchForm.submit(function(e){
@@ -48,7 +55,7 @@ function DissapearModal(){
 }
 
 
-// retreives info from the weather api and then passes it to fill weather data.
+// retreives info from the weather api and then passes it to fill weather data...............
 var DisplayWeather = function(lat, long){
     var apiAdress = 
         "https://api.openweathermap.org/data/2.5/onecall?lat="
@@ -60,7 +67,7 @@ var DisplayWeather = function(lat, long){
     });
 }
 
-// adds weather info to its appropriate section in the weather div.
+// ..........adds weather info to its appropriate section in the weather div............
 var  FillWeatherData = function(data){
     var weatherEl = $("#myweather");
     dataField =  weatherEl.children("p");
@@ -94,8 +101,7 @@ var FillDataField = function(element, data)
 
 //DisplayWeather(0,0);
 
+searchInput.addEventListener('keyup', addSearchInput)
 searchBtn.on('click', AppearModal)
 closeBtn.on('click', DissapearModal)
 cancelBtn.on('click', DissapearModal)
-
-
