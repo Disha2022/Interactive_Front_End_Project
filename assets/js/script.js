@@ -7,6 +7,10 @@ var confirmBtn = $('#confirm-btn');
 var searchInput = document.getElementById('user-search');
 var request ={
     location: {lat: 28.6024, lng: -81.2001},
+    radius: 5000,
+    type: ['restaurant']
+};
+
 
 function searchForAddress(){
 
@@ -37,8 +41,7 @@ function searchForAddress(){
     results.filter(result => result.rating)
     .sort((a, b) => a.rating > b.rating ? -1 : 1)
     .forEach(result => {
-        places.innerHTML += `<li>${result.name} - ${result.rating}<button type="button" class="list-btn"><img src='./assets/images/heart.png'></button></li>`
-
+        places.innerHTML += `<li>${result.name} - ${result.rating}</li>`
     })
 }
 }
@@ -78,10 +81,6 @@ function insertModalAddress(){
 }
 
 
-
-searchInput.addEventListener('keyup', insertModalAddress)
-confirmBtn.on('click', searchForAddress)
-=======
 // retreives info from the weather api and then passes it to fill weather data...............
 var DisplayWeather = function(lat, long){
     var apiAdress = 
