@@ -1,10 +1,10 @@
-var overlay = $('#overlay')
-var closeBtn = $('#close-modal')
-var searchBtn = $('#search-btn')
-var searchForm = $('#search-form')
-var cancelBtn = $('#cancel-btn')
+var overlay = $('#overlay');
+var closeBtn = $('#close-modal');
+var searchBtn = $('#search-btn');
+var searchForm = $('#search-form');
+var cancelBtn = $('#cancel-btn');
+var searchInput = document.getElementById('user-search');
 
-var searchInput = document.getElementById('user-search')
 const request ={
     location: new google.maps.LatLng(51.5287352, -0.3817841),
     radius: 5000,
