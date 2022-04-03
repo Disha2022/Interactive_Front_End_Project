@@ -3,90 +3,47 @@ var closeBtn = $('#close-modal')
 var searchBtn = $('#search-btn')
 var searchForm = $('#search-form')
 var cancelBtn = $('#cancel-btn')
-var mapArea = document.getElementById("map")
+
 var searchInput = document.getElementById('user-search')
-var infowindow;
-var map;
-var service;
+const request ={
+    location: new google.maps.LatLng(51.5287352, -0.3817841),
+    radius: 5000,
+    type: ['restaurant']
+};
+const results = [];
+const places = document.getElementById('places')
+const service = new google.maps.places.PlacesService(places)
 
+service.nearbySearch(request, callback);
 
-
-var request = {
-    query: '',
-    fields: ['name', 'geometry', 'rating'],
-    types: ['restaurant']
-}
-
-function addSearchInput(){
-    var Location= searchInput.value
-   address= Location
-}
-
-function initGoogle() {
-    var location = {
-        lat: 40.000,
-        lng: -79.000
-    }
-    var options = {
-        center: location,
-        zoom: 9
+function callback(response, status, pagination) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+        results.push(...response);
     }
 
-    if(navigator.geolocation) {
-        console.log('geolocation is here!');
-
-        navigator.geolocation.getCurrentPosition((loc) => {
-            location.lat = loc.coords.latitude;
-            location.lng = loc.coords.longitude;
-
-            map = new google.maps.Map(mapArea, options);
-            infowindow= new google.maps.InfoWindow();
-        },
-        (err) => {
-            console.log('user blocked')
-            map = new google.maps.Map(mapArea, options);
-            infowindow= new google.maps.InfoWindow()
-        })
-    } else{
-        console.log('geolocation not supported boo!')
-        map = new google.maps.Map(mapArea, options)
-        infowindow= new google.maps.InfoWindow()
+    if (pagination.hasNextPage){
+        setTimeout(() => pagination.nextPage(), 2000);
+    } else {
+        displayResults();
     }
-    
 }
- 
-function SearchLocation(){
-    service = new google.maps.places.PlacesService(map);
-    service.findPlaceFromQuery(request, (results, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-          for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
-          }
-          map.setCenter(results[0].geometry.location);
-        }
+
+function displayResults(){
+    results.filter(result => result.rating)
+    .sort((a, b) => a.rating > b.rating ? -1 : 1)
+    .forEach(result => {
+        places.innerHTML += `<li>${result.name} - ${result.rating}</li>`
     })
 }
 
-function createMarker(place) {
-    if (!place.geometry || !place.geometry.location) return;
-  
-    const marker = new google.maps.Marker({
-      map,
-      position: place.geometry.location,
-    });
-  
-    google.maps.event.addListener(marker, "click", () => {
-      infowindow.setContent(place.name);
-      infowindow.open(map);
-    });
-  }
-  
 
 
+function addSearchInput(){
+    var Location= searchInput.value
 
-searchForm.submit(function(e){
-    e.preventDefault();
-})
+}
+
+
 
 function AppearModal(){
         overlay.removeClass('hidden').addClass('flex')
@@ -100,5 +57,4 @@ searchInput.addEventListener('keyup', addSearchInput)
 searchBtn.on('click', AppearModal)
 closeBtn.on('click', DissapearModal)
 cancelBtn.on('click', DissapearModal)
-searchBtn.on('click', SearchLocation)
 
