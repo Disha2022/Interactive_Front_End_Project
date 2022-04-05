@@ -41,7 +41,23 @@ function searchForAddress(){
     results.filter(result => result.rating)
     .sort((a, b) => a.rating > b.rating ? -1 : 1)
     .forEach(result => {
-        places.innerHTML += `<li>${result.name} - <span class="text-yellow-200">Rating: ${result.rating}&#9734;</span><button type="button" class="list-btn"><img src='./assets/images/heart.png'></button></li>`
+
+        var span = $("<span></span>");
+        span.addClass("text-yellow-200");
+        span.html("Rating: " + result.rating + "&#9734;");
+        var button = $("<button></button>");
+        button.attr("type", "button");
+        button.addClass("list-btn");
+        button.html("<img src='./assets/images/heart.png'></img>");
+        button.click(function(){
+            addPick(result.name)});
+
+        var li = $("<li></li>");
+        li.text(result.name + " - ");
+
+        li.append(span);
+        li.append(button);
+        $("#places").append(li);
     })
 }
 }
@@ -135,9 +151,31 @@ closeBtn.on('click', DissapearModal)
 cancelBtn.on('click', DissapearModal)
 
 // -----------------My Picks Section: Add restaurants for selection-------------------------
-// $( "#btn-list" ).click(function() {
-//     var myPick = $(function(){
-//             $('#copy').clone().appendTo('#mypicks');
-//         });
-    
-//   });
+const myPicks = JSON.parse(localStorage.getItem("myPicks")) || [];
+var myPicksList = $("#mypicks-list");
+for (let i = 0; i < myPicks.length; i++) {
+    const element = myPicks[i];
+    showPickInList(element);
+}
+
+
+function showPickInList(name){
+    var li = $("<li></li>");
+    li.text(name);
+    myPicksList.append(li);
+}
+
+function addPick(name){
+    var newName = true;
+    for (let i = 0; i < myPicks.length; i++) {
+        const element = myPicks[i];
+        if (name===element){
+            newName = false;
+        }
+    }
+    if (newName){
+        myPicks.push(name);
+        localStorage.setItem("myPicks", JSON.stringify(myPicks));
+        showPickInList(name);
+    }
+}
