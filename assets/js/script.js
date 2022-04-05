@@ -164,7 +164,15 @@ for (let i = 0; i < myPicks.length; i++) {
 function showPickInList(name){
     var li = $("<li></li>");
     li.text(name);
+    // var butte =$("<button>");
+    // button.attr("type", "button");
+    //     button.addClass("list-btn-2");
+    //     button.html("Remove");
+    //     button.click(function(){
+    //         removePick(result.name)});
+    // li.append(butte);
     myPicksList.append(li);
+    
 }
 
 function addPick(name){

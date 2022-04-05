@@ -154,7 +154,7 @@ ol {
     /* height: 50px; */
     background-color: rgb(237, 209, 122);
     align-items: right;
-    padding: 1%;
+    padding: .4%;
     margin: 1%;
    border-style: dashed;
    border-color: white;
@@ -165,9 +165,10 @@ ol {
    cursor: pointer;
 }
 .list-btn:hover{
-    outline: rgb(38, 127, 132);
+    
     border-width: 1px;
  border-color: blueviolet;
+ background-color: bisque;
 
 }
 #cloud{
