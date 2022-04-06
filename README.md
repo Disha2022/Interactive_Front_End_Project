@@ -6,12 +6,12 @@ Provide a website that displays a list of nearby restaurant for a given location
 ## technologys used 
 *HTML  
 *CSS  
-*Tailwind
-*jquerry
-*open weather one call api
-https://openweathermap.org/api/one-call-api
-*Google maps places library 
-https://developers.google.com/maps/documentation/javascript/places
+*Tailwind  
+*jquerry  
+*open weather one call api  
+https://openweathermap.org/api/one-call-api  
+*Google maps places library   
+https://developers.google.com/maps/documentation/javascript/places  
 
 ##website
 https://disha2022.github.io/Interactive_Fron
