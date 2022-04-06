@@ -7,8 +7,8 @@ Provide a website that displays a list of nearby restaurant for a given location
 *HTML  
 *CSS  
 *Tailwind  
-*jquerry  
-*open weather one call api  
+*Jquerry  
+*Open weather one call api  
 https://openweathermap.org/api/one-call-api  
 *Google maps places library   
 https://developers.google.com/maps/documentation/javascript/places  
