@@ -1,10 +1,10 @@
 # MyFoodPlace
 
 ##purpose 
-provide a website that displays a list of nearby restaurant for a given location and its weather conditions.
+Provide a website that displays a list of nearby restaurant for a given location and its weather conditions.
 
-# technologys used 
-*html
+## technologys used 
+*HTML
 *css
 *tailwind
 *jquerry
