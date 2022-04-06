@@ -4,6 +4,10 @@
 provide a website that displays a list of nearby restaurant for a given location and its weather conditions.
 
 # technologys used 
+*html
+*css
+*tailwind
+*jquerry
 *open weather one call api
 https://openweathermap.org/api/one-call-api
 *Google maps places library 
