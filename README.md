@@ -17,5 +17,5 @@ https://developers.google.com/maps/documentation/javascript/places
 https://disha2022.github.io/Interactive_Fron
 ![image](https://user-images.githubusercontent.com/99444802/162042208-c1abc862-fa49-4200-9c9d-4953e2ff66a2.png)
 
-## Contriblutions
+## contributions
 Made by Disha Barua, Ethan Cahill, and Christian Foote
