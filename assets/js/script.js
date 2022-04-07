@@ -2,8 +2,9 @@ var overlay = $('#overlay');
 var closeBtn = $('#close-modal');
 var searchBtn = $('#search-btn');
 var searchForm = $('#search-form');
-var cancelBtn = $('#cancel-btn');
+var OKBtn = $('#ok-btn');
 var confirmBtn = $('#confirm-btn');
+var locationBtn= $("#location-btn");
 var searchInput = document.getElementById('user-search');
 var request ={
     location: {lat: 28.6024, lng: -81.2001},
@@ -11,13 +12,26 @@ var request ={
     type: ['restaurant']
 };
 
+// searches for address by location
+function findCurrentLocation(){
+    if (navigator.geolocation){
+   navigator.geolocation.getCurrentPosition(
+       (position) => {
+          request.location.lat=position.coords.latitude
+          request.location.lng=position.coords.longitude
+          searchForAddress()
+       }
+   )}
+}
+
+
 // Searches for restaurants within a radius around a coordinate
 function searchForAddress(){
 
 
     const results = [];
     const places = document.getElementById('places')
-
+// rename to better name more sensible name
 
     const service = new google.maps.places.PlacesService(places);
     service.nearbySearch(request, callback);
@@ -31,10 +45,12 @@ function searchForAddress(){
         setTimeout(() => pagination.nextPage(), 2000);
     } else {
         displayResults();
-        DissapearModal();
         searchInput.value=''
     }
 }
+
+
+
 
 // Sorts results by rating biggest to smallest
     function displayResults(){
@@ -77,7 +93,7 @@ function codeAddress() {
        request.location.lng= results[0].geometry.location.lng()
       }
       else{
-          alert('Error: Please Enter Valid Address')
+          AppearModal()
       }
     });
 }
@@ -92,12 +108,6 @@ function AppearModal(){
 function DissapearModal(){
     overlay.removeClass('flex').addClass('hidden')
 }
-
-function insertModalAddress(){
-    var modalText = searchInput.value
-    document.getElementById('modal-text').textContent='Is ' + modalText + ' the correct address?'
-}
-
 
 // retreives info from the weather api and then passes it to fill weather data...............
 var DisplayWeather = function(lat, long){
@@ -145,12 +155,12 @@ var FillDataField = function(element, data)
 
 DisplayWeather(request.location.lat,request.location.lng);
 
-searchInput.addEventListener('keyup', insertModalAddress)
+
 confirmBtn.on('click', searchForAddress)
-searchBtn.on('click', AppearModal)
 searchBtn.on('click', codeAddress)
 closeBtn.on('click', DissapearModal)
-cancelBtn.on('click', DissapearModal)
+OKBtn.on('click', DissapearModal)
+locationBtn.on('click', findCurrentLocation)
 
 // -----------------My Picks Section: Add restaurants for selection-------------------------
 const myPicks = JSON.parse(localStorage.getItem("myPicks")) || [];
