@@ -148,13 +148,15 @@ ol {
     margin-bottom: 1%;
     margin-left: 2%;
     color: white;
+        display: flex;
+    justify-content: space-between;
 }
 .list-btn {
     display: inline-flex;
     /* height: 50px; */
     background-color: rgb(237, 209, 122);
     align-items: right;
-    padding: 1%;
+    padding: .4%;
     margin: 1%;
    border-style: dashed;
    border-color: white;
@@ -165,11 +167,17 @@ ol {
    cursor: pointer;
 }
 .list-btn:hover{
-    outline: rgb(38, 127, 132);
+    
     border-width: 1px;
  border-color: blueviolet;
+ background-color: bisque;
 
 }
 #cloud{
     margin:auto;
+}
+ul li .list-btn-2 {
+    font-size: small;
+    background-color: rgb(241 251 0);
+    color: black;
 }
