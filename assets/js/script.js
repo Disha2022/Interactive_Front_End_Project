@@ -160,8 +160,9 @@ function showPickInList(name) {
   li.text(name);
   var button = $("<button>");
   button.attr("type", "button");
-  button.addClass("list-btn-2");
-  button.html("Remove");
+  button.addClass("list-btn-2 ");
+  button.html("<img src='./assets/images/delete.png'></img>");
+  button.addClass("list-btn-3");
   button.click(function () {
     removePick(name);
   });
