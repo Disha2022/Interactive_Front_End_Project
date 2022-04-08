@@ -164,13 +164,13 @@ for (let i = 0; i < myPicks.length; i++) {
 function showPickInList(name){
     var li = $("<li></li>");
     li.text(name);
-    // var butte =$("<button>");
-    // button.attr("type", "button");
-    //     button.addClass("list-btn-2");
-    //     button.html("Remove");
-    //     button.click(function(){
-    //         removePick(result.name)});
-    // li.append(butte);
+     var button =$("<button>");
+     button.attr("type", "button");
+         button.addClass("list-btn-2");
+        button.html("Remove");
+         button.click(function(){
+             removePick(name)});
+     li.append(button);
     myPicksList.append(li);
     
 }
@@ -188,4 +188,11 @@ function addPick(name){
         localStorage.setItem("myPicks", JSON.stringify(myPicks));
         showPickInList(name);
     }
+}
+//removes the the given restraunt from the local storage and the webpage
+function removePick(name){
+    var index = myPicks.indexOf(name);
+    myPicks.splice(index,1);
+    localStorage.setItem("myPicks",JSON.stringify(myPicks));
+    $("#mypicks-list").children().get(index).remove();
 }

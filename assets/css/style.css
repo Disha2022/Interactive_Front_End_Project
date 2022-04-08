@@ -158,6 +158,8 @@ ol {
     margin-bottom: 1%;
     margin-left: 2%;
     color: white;
+        display: flex;
+    justify-content: space-between;
 }
 .list-btn {
     display: inline-flex;
@@ -183,4 +185,9 @@ ol {
 }
 #cloud{
     margin:auto;
+}
+ul li .list-btn-2 {
+    font-size: small;
+    background-color: rgb(241 251 0);
+    color: black;
 }
