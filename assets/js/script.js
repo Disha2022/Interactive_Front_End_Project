@@ -5,14 +5,18 @@ var searchForm = $('#search-form');
 var OKBtn = $('#ok-btn');
 var confirmBtn = $('#confirm-btn');
 var locationBtn= $("#location-btn");
+const places = document.getElementById('places')
+var restaurantList= $('#places')
 var searchInput = document.getElementById('user-search');
 var restaurantLocation = document.getElementById('restaurant-name')
 
 var request ={
-    location: {lat: 28.6024, lng: -81.2001},
+    location: {lat: 0, lng: 0},
     radius: 5000,
     type: ['restaurant']
 };
+
+var results = [];
 
 // searches for address by location
 function findCurrentLocation(){
@@ -39,22 +43,17 @@ function displayAddress(){
 // Searches for restaurants within a radius around a coordinate
 function searchForAddress(){
 
-
-    const results = [];
-    const places = document.getElementById('places')
 // rename to better name more sensible name
 
     const service = new google.maps.places.PlacesService(places);
     service.nearbySearch(request, callback);
 
-    function callback(response, status, pagination) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-        results.push(...response);
-    }
-
-    if (pagination.hasNextPage){
-        setTimeout(() => pagination.nextPage(), 2000);
-    } else {
+    function callback(response, status) {
+        if(request.location.lat === 0 && request.location.lng === 0){
+            AppearModal()
+        } else if (status == google.maps.places.PlacesServiceStatus.OK) {
+            results.push(...response);
+        }
         displayResults();
         searchInput.value=''
     }
@@ -66,6 +65,8 @@ function searchForAddress(){
 // Sorts results by rating biggest to smallest
     function displayResults(){
     DisplayWeather(request.location.lat,request.location.lng);
+
+    restaurantList.empty()
 
     results.filter(result => result.rating)
     .sort((a, b) => a.rating > b.rating ? -1 : 1)
@@ -89,7 +90,7 @@ function searchForAddress(){
         $("#places").append(li);
     })
 }
-}
+
 
 function initialize(){
     geocoder = new google.maps.Geocoder();
@@ -102,8 +103,10 @@ function codeAddress() {
 
        request.location.lat= results[0].geometry.location.lat()
        request.location.lng= results[0].geometry.location.lng()
+
+       setTimeout(searchForAddress, 1000)
       }
-      else{
+      else {
           AppearModal()
       }
     });
@@ -166,12 +169,11 @@ var FillDataField = function(element, data)
 
 DisplayWeather(request.location.lat,request.location.lng);
 
-
-searchBtn.on('click', codeAddress, searchForAddress)
+searchBtn.on('click', function(){results=[]})
+searchBtn.on('click', codeAddress)
 searchBtn.on('click', displayAddress)
-OKBtn.on('click', DissapearModal, function(){
-    searchInput.value=''
-})
+OKBtn.on('click', DissapearModal)
+closeBtn.on('click', DissapearModal)
 locationBtn.on('click', findCurrentLocation)
 
 
