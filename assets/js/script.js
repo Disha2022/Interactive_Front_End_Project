@@ -6,6 +6,8 @@ var OKBtn = $('#ok-btn');
 var confirmBtn = $('#confirm-btn');
 var locationBtn= $("#location-btn");
 var searchInput = document.getElementById('user-search');
+var restaurantLocation = document.getElementById('restaurant-name')
+
 var request ={
     location: {lat: 28.6024, lng: -81.2001},
     radius: 5000,
@@ -20,9 +22,18 @@ function findCurrentLocation(){
           request.location.lat=position.coords.latitude
           request.location.lng=position.coords.longitude
           searchForAddress()
+          restaurantLocation.textContent= 'Restaurants Near My Current Location'
        }
    )}
 }
+
+// adds address to modal and to Restaurant section
+
+function displayAddress(){
+    document.getElementById('modal-text').textContent= searchInput.value + ' is not a valid address'
+    restaurantLocation.textContent = 'Restaurants Nearby: ' + searchInput.value
+}
+
 
 
 // Searches for restaurants within a radius around a coordinate
@@ -156,11 +167,13 @@ var FillDataField = function(element, data)
 DisplayWeather(request.location.lat,request.location.lng);
 
 
-confirmBtn.on('click', searchForAddress)
-searchBtn.on('click', codeAddress)
-closeBtn.on('click', DissapearModal)
-OKBtn.on('click', DissapearModal)
+searchBtn.on('click', codeAddress, searchForAddress)
+searchBtn.on('click', displayAddress)
+OKBtn.on('click', DissapearModal, function(){
+    searchInput.value=''
+})
 locationBtn.on('click', findCurrentLocation)
+
 
 // -----------------My Picks Section: Add restaurants for selection-------------------------
 const myPicks = JSON.parse(localStorage.getItem("myPicks")) || [];
