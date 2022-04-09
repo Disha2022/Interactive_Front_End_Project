@@ -6,8 +6,8 @@
     justify-content: space-between;
     margin-top: 1%;
     padding: 0 1% 1% 1%;
-    margin-right:2%;
-    align-items:center;
+    margin-right: 2%;
+    align-items: center;
 }
 
 #search h1 {
@@ -21,7 +21,7 @@
 }
 
 #search form {
-display:flex;
+    display: flex;
 }
 
 #search button {
@@ -46,10 +46,8 @@ display:flex;
 }
 
 .searchfood {
-
     align-items: right;
     margin-bottom: 1%;
-
 }
 
 ol {
@@ -77,7 +75,6 @@ ol {
     color: white;
     margin-left: 2%;
     margin-right: 2%;
-
 }
 
 .weather h2 {
@@ -88,8 +85,8 @@ ol {
     margin-right: 1%;
     text-align: center;
     background-color: white;
-
 }
+
 .weather p {
     color: white;
     background-color: rgb(91, 210, 188);
@@ -106,15 +103,21 @@ ol {
     margin-left: 1%;
 }
 
-.foods ul li {
+/* .foods ul li {
+    
     background-color: rgb(91, 210, 188);
     margin-bottom: 1%;
-    margin-left: 1%;
+    margin-left: 1%; */
 
 }
 
-.foods h2 {
+#places {
+    font-size: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 1%;
+}
 
+.foods h2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(38, 127, 132);
     padding-bottom: 0.5%;
@@ -143,12 +146,18 @@ ol {
     background-color: white;
 }
 
+
 .foodlove ul li {
+    font-size: 80%;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(91, 210, 188);
     margin-bottom: 1%;
     margin-left: 2%;
     color: white;
+    display: flex;
+    justify-content: space-between;
 }
+
 .list-btn {
     display: inline-flex;
     /* height: 50px; */
@@ -156,21 +165,28 @@ ol {
     align-items: right;
     padding: .4%;
     margin: 1%;
-   border-style: dashed;
-   border-color: white;
-   outline: none;
-   border-radius: 5px;
-   overflow: hidden;
-   font-size: 3px;
-   cursor: pointer;
+    border-style: dashed;
+    border-color: white;
+    outline: none;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 3px;
+    cursor: pointer;
 }
-.list-btn:hover{
-    
-    border-width: 1px;
- border-color: blueviolet;
- background-color: bisque;
 
+.list-btn:hover {
+    border-width: 1px;
+    border-color: blueviolet;
+    background-color: bisque;
 }
-#cloud{
-    margin:auto;
+
+#cloud {
+    margin: auto;
 }
+
+ul li .list-btn-2 {
+    /* font-size: small; */
+    /* background-color: rgb(241 251 0); */
+    /* color: black; */
+}
+
