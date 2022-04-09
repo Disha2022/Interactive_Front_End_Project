@@ -167,14 +167,18 @@ var FillDataField = function (element, data) {
   } else element.textContent += data;
 };
 
+// clear results
+function clearResults(){results=[]}
+
 DisplayWeather(request.location.lat, request.location.lng);
 
-searchBtn.on('click', function(){results=[]})
+searchBtn.on('click', clearResults)
 searchBtn.on('click', codeAddress)
 searchBtn.on('click', displayAddress)
 OKBtn.on('click', DissapearModal)
 closeBtn.on('click', DissapearModal)
 locationBtn.on('click', findCurrentLocation)
+locationBtn.on('click', clearResults)
 
 
 // -----------------My Picks Section: Add restaurants for selection-------------------------
