@@ -67,10 +67,7 @@ function searchForAddress(){
 
     restaurantList.empty()
 
-    results.filter(result => result.rating)
-    .sort((a, b) => a.rating > b.rating ? -1 : 1)
-    .forEach(result => {
-
+    
     results
       .filter((result) => result.rating)
       .sort((a, b) => (a.rating > b.rating ? -1 : 1))
