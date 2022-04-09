@@ -9,6 +9,7 @@ const places = document.getElementById('places')
 var restaurantList= $('#places')
 var searchInput = document.getElementById('user-search');
 var restaurantLocation = document.getElementById('restaurant-name')
+var weatherTitle =  document.getElementById('weather-title')
 
 var request ={
     location: {lat: 0, lng: 0},
@@ -27,6 +28,8 @@ function findCurrentLocation(){
           request.location.lng=position.coords.longitude
           searchForAddress()
           restaurantLocation.textContent= 'Restaurants Near My Current Location'
+          weatherTitle.textContent = 'Weather Near My Current Location'
+
        }
    )}
 }
@@ -34,6 +37,7 @@ function findCurrentLocation(){
 // adds address to modal and to Restaurant section
 
 function displayAddress(){
+    weatherTitle.textContent = 'The Weather Near ' + searchInput.value
     document.getElementById('modal-text').textContent= searchInput.value + ' is not a valid address'
     restaurantLocation.textContent = 'Restaurants Nearby: ' + searchInput.value
 }
@@ -74,7 +78,7 @@ function searchForAddress(){
         span.html("Rating: " + result.rating + "&#9734;");
         var button = $("<button></button>");
         button.attr("type", "button");
-        button.addClass("list-btn");
+        button.addClass("list-btn hover:scale-150 duration-300");
         button.html("<img src='./assets/images/heart.png'></img>");
         button.click(function () {
           addPick(result.name);
@@ -194,7 +198,7 @@ function showPickInList(name) {
   li.text(name);
   var button = $("<button>");
   button.attr("type", "button");
-  button.addClass("list-btn-2 ");
+  button.addClass("list-btn-2 hover:translate-y-0.5 hover:-translate-x-0.5 hover:scale-110 duration-300");
   button.html("<img src='./assets/images/delete.png'></img>");
   button.addClass("list-btn-3");
   button.click(function () {
