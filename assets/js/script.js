@@ -1,41 +1,75 @@
-var overlay = $("#overlay");
-var closeBtn = $("#close-modal");
-var searchBtn = $("#search-btn");
-var searchForm = $("#search-form");
-var cancelBtn = $("#cancel-btn");
-var confirmBtn = $("#confirm-btn");
-var searchInput = document.getElementById("user-search");
-var request = {
-  location: { lat: 28.6024, lng: -81.2001 },
-  radius: 5000,
-  type: ["restaurant"],
+var overlay = $('#overlay');
+var closeBtn = $('#close-modal');
+var searchBtn = $('#search-btn');
+var searchForm = $('#search-form');
+var OKBtn = $('#ok-btn');
+var confirmBtn = $('#confirm-btn');
+var locationBtn= $("#location-btn");
+const places = document.getElementById('places')
+var restaurantList= $('#places')
+var searchInput = document.getElementById('user-search');
+var restaurantLocation = document.getElementById('restaurant-name')
+
+var request ={
+    location: {lat: 0, lng: 0},
+    radius: 5000,
+    type: ['restaurant']
 };
 
-// Searches for restaurants within a radius around a coordinate
-function searchForAddress() {
-  const results = [];
-  const places = document.getElementById("places");
+var results = [];
+
+// searches for address by location
+function findCurrentLocation(){
+    if (navigator.geolocation){
+   navigator.geolocation.getCurrentPosition(
+       (position) => {
+          request.location.lat=position.coords.latitude
+          request.location.lng=position.coords.longitude
+          searchForAddress()
+          restaurantLocation.textContent= 'Restaurants Near My Current Location'
+       }
+   )}
+}
+
+// adds address to modal and to Restaurant section
+
+function displayAddress(){
+    document.getElementById('modal-text').textContent= searchInput.value + ' is not a valid address'
+    restaurantLocation.textContent = 'Restaurants Nearby: ' + searchInput.value
+}
+
 
   const service = new google.maps.places.PlacesService(places);
   service.nearbySearch(request, callback);
 
-  function callback(response, status, pagination) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      results.push(...response);
-    }
 
-    if (pagination.hasNextPage) {
-      setTimeout(() => pagination.nextPage(), 2000);
-    } else {
-      displayResults();
-      DissapearModal();
-      searchInput.value = "";
+// Searches for restaurants within a radius around a coordinate
+function searchForAddress(){
+
+
+    const service = new google.maps.places.PlacesService(places);
+    service.nearbySearch(request, callback);
+
+    function callback(response, status) {
+        if(request.location.lat === 0 && request.location.lng === 0){
+            AppearModal()
+        } else if (status == google.maps.places.PlacesServiceStatus.OK) {
+            results.push(...response);
+        }
+        displayResults();
+        searchInput.value=''
     }
   }
 
-  // Sorts results by rating biggest to smallest
-  function displayResults() {
-    DisplayWeather(request.location.lat, request.location.lng);
+// Sorts results by rating biggest to smallest
+    function displayResults(){
+    DisplayWeather(request.location.lat,request.location.lng);
+
+    restaurantList.empty()
+
+    results.filter(result => result.rating)
+    .sort((a, b) => a.rating > b.rating ? -1 : 1)
+    .forEach(result => {
 
     results
       .filter((result) => result.rating)
@@ -58,24 +92,31 @@ function searchForAddress() {
         li.append(span);
         li.append(button);
         $("#places").append(li);
-      });
-  }
+    })
 }
+
+
 
 function initialize() {
   geocoder = new google.maps.Geocoder();
 }
 
 function codeAddress() {
-  var address = searchInput.value;
-  geocoder.geocode({ address: address }, function (results, status) {
-    if (status == "OK") {
-      request.location.lat = results[0].geometry.location.lat();
-      request.location.lng = results[0].geometry.location.lng();
-    } else {
-      alert("Error: Please Enter Valid Address");
-    }
-  });
+
+    var address = searchInput.value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+
+       request.location.lat= results[0].geometry.location.lat()
+       request.location.lng= results[0].geometry.location.lng()
+
+       setTimeout(searchForAddress, 1000)
+      }
+      else {
+          AppearModal()
+      }
+    });
+
 }
 
 searchForm.submit(function (e) {
@@ -87,12 +128,6 @@ function AppearModal() {
 }
 function DissapearModal() {
   overlay.removeClass("flex").addClass("hidden");
-}
-
-function insertModalAddress() {
-  var modalText = searchInput.value;
-  document.getElementById("modal-text").textContent =
-    "Is " + modalText + " the correct address?";
 }
 
 // retreives info from the weather api and then passes it to fill weather data...............
@@ -140,12 +175,13 @@ var FillDataField = function (element, data) {
 
 DisplayWeather(request.location.lat, request.location.lng);
 
-searchInput.addEventListener("keyup", insertModalAddress);
-confirmBtn.on("click", searchForAddress);
-searchBtn.on("click", AppearModal);
-searchBtn.on("click", codeAddress);
-closeBtn.on("click", DissapearModal);
-cancelBtn.on("click", DissapearModal);
+searchBtn.on('click', function(){results=[]})
+searchBtn.on('click', codeAddress)
+searchBtn.on('click', displayAddress)
+OKBtn.on('click', DissapearModal)
+closeBtn.on('click', DissapearModal)
+locationBtn.on('click', findCurrentLocation)
+
 
 // -----------------My Picks Section: Add restaurants for selection-------------------------
 const myPicks = JSON.parse(localStorage.getItem("myPicks")) || [];
