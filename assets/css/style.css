@@ -26,10 +26,11 @@
 
 #search button {
     font-size: large;
-    padding-right: 4%;
-    padding-left: 4%;
+    padding-right: 5%;
+    padding-left: 5%;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
+    margin-right: 1%;
     /* margin-bottom:0.05%; */
     background-color: rgb(38, 127, 132);
     color: white;
@@ -96,10 +97,13 @@ ol {
 .foods {
     font-size: 18px;
     text-align: center;
-    margin-bottom: 1%;
+    
     color: white;
     padding-right: 1%;
     margin-right: 0.5%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    margin-top: 1%;
     margin-left: 1%;
 }
 
@@ -114,7 +118,7 @@ ol {
 #places {
     font-size: 80%;
     font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
 }
 
 .foods h2 {
@@ -123,7 +127,7 @@ ol {
     padding-bottom: 0.5%;
     margin-bottom: 1%;
     text-align: center;
-    border: rgb(126, 158, 213);
+ 
 }
 
 .foodlove {
