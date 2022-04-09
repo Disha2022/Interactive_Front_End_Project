@@ -39,9 +39,6 @@ function displayAddress(){
 }
 
 
-  const service = new google.maps.places.PlacesService(places);
-  service.nearbySearch(request, callback);
-
 
 // Searches for restaurants within a radius around a coordinate
 function searchForAddress(){
