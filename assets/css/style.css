@@ -25,9 +25,9 @@
 }
 
 #search button {
-    font-size: large;
-    padding-right: 4%;
-    padding-left: 4%;
+    /* font-size: large; */
+    padding-right: 1%;
+    padding-left: 1%;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     /* margin-bottom:0.05%; */
@@ -109,7 +109,7 @@ ol {
     margin-bottom: 1%;
     margin-left: 1%; */
 
-}
+/* } */
 
 #places {
     font-size: 80%;
@@ -190,3 +190,14 @@ ul li .list-btn-2 {
     /* color: black; */
 }
 
+@media only screen and (max-width:600px){
+    #search{
+        position: fixed;
+        z-index: 9999;
+        background-color: white;
+        margin: 0;
+    }
+    .searchfood{
+    margin: 0;
+    }
+}
