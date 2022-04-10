@@ -36,6 +36,8 @@
     color: white;
 }
 
+
+
 .hero {
     display: flex;
     flex-wrap: wrap;
@@ -107,13 +109,6 @@ ol {
     margin-left: 1%;
 }
 
-/* .foods ul li {
-    
-    background-color: rgb(91, 210, 188);
-    margin-bottom: 1%;
-    margin-left: 1%; */
-
-/* } */
 
 #places {
     font-size: 80%;
