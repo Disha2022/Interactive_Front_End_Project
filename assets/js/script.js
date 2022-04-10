@@ -1,3 +1,8 @@
+var dayIndex = 0;
+var previousDayEl =$("#previous-day");
+var nextDayEl =$("#next-day");
+var weather;
+
 var overlay = $("#overlay");
 var closeBtn = $("#close-modal");
 var searchBtn = $("#search-btn");
@@ -102,10 +107,36 @@ var DisplayWeather = function (lat, long) {
     lat +
     "&lon=" +
     long +
-    "&exclude=hourly,daily,alerts,minutely&units=imperial&appid=ec93ec889e22ec6a9e1c57a53cc4c613";
+    "&exclude=hourly,alerts,minutely&units=imperial&appid=ec93ec889e22ec6a9e1c57a53cc4c613";
   var weather = fetch(apiAdress).then(function (response) {
     response.json().then(function (data) {
-      FillWeatherData(data.current);
+      weather = data;
+      FillWeatherData(weather.daily[0]);
+      previousDayEl.on("click",function(){
+        dayIndex--;
+
+        //if it moves from the last day to the second to last day reenable the other button
+        if(dayIndex==6)
+          nextDayEl.removeClass("disabled");
+        // if it is the first day disable this button
+        else if(dayIndex ==0)
+          previousDayEl.addClass("disabled");
+
+        FillWeatherData(weather.daily[dayIndex]);
+      });
+      nextDayEl.on("click",function(){
+        dayIndex++;
+
+                //if it moves from the first day to the second day reenable the other button
+                if(dayIndex==1)
+                previousDayEl.removeClass("disabled");
+              // if it is the last day disable this button
+              else if(dayIndex ==7)
+                nextDayEl.addClass("disabled");
+
+        FillWeatherData(weather.daily[dayIndex]);
+      });
+      console.log(data);
     });
   });
 };
@@ -114,6 +145,8 @@ var DisplayWeather = function (lat, long) {
 var FillWeatherData = function (data) {
   var weatherEl = $("#myweather");
   dataField = weatherEl.children("p");
+  var date = new Date(data.dt*1000).toLocaleDateString("en-US");;
+  $("#date").text(date);
   //pick the correct cloud img.
   var cloudInfo = data.weather[0];
   var CloudEl = $("#cloud");
@@ -124,7 +157,7 @@ var FillWeatherData = function (data) {
     alt: cloudInfo.description,
   });
 
-  FillDataField(dataField[0], data.temp + String.fromCharCode(176) + "F");
+  FillDataField(dataField[0], data.temp.day + String.fromCharCode(176) + "F");
   FillDataField(dataField[1], data.wind_speed + " mph");
   FillDataField(dataField[2], data.humidity + "%");
 };
@@ -137,6 +170,14 @@ var FillDataField = function (element, data) {
     element.innerText = element.innerText.substring(0, numberLoc.index) + data;
   } else element.textContent += data;
 };
+
+
+var CycleDay = function(){
+  if(index<8)
+    index++;
+  else 
+    index = 0;
+}
 
 DisplayWeather(request.location.lat, request.location.lng);
 
