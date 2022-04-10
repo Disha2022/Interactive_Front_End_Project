@@ -117,9 +117,9 @@ function searchForAddress(){
         li.append(span);
         li.append(button);
         $("#places").append(li);
-       function fadeIn(){
-        ol.removeClass('opacity-0')
+        function fadeIn(){
         ol.addClass('opacity-100 duration-700')
+        ol.removeClass('opacity-0')
         li.removeClass('-translate-y-5 scale-0 opacity-0')
         li.addClass('translate-y-0 opacity-100 scale-100 duration-1000')
        }

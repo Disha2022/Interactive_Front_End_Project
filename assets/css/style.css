@@ -202,13 +202,19 @@ ol {
 
 
 @media only screen and (max-width:600px){
+
     #search{
         position: fixed;
         z-index: 9999;
         background-color: white;
         margin: 0;
+        width: auto;
+    }
+    #search h1{
+        font-size: 150%;
+        margin-right: 25px;
     }
     .searchfood{
-    margin: 0;
+    margin: 5px 0 0;
     }
 }
