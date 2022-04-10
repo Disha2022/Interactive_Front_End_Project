@@ -4,8 +4,8 @@
     flex-wrap: wrap;
     text-align: right;
     justify-content: space-between;
-    margin-top: 1%;
-    padding: 0 1% 1% 1%;
+    margin-top: 0.5%;
+    padding: 0 1% 0 1%;
     margin-right: 2%;
     align-items: center;
 }
@@ -24,19 +24,23 @@
     display: flex;
 }
 
+
 #search button {
     /* font-size: large; */
-    padding-right: 1%;
-    padding-left: 1%;
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     margin-right: 1%;
-     margin-bottom:0.05%;
+    margin-bottom:0.05%;
     background-color: rgb(38, 127, 132);
     color: white;
 }
 
+#location-btn{
+    font-size: 10px;
 
+}
 
 .hero {
     display: flex;
@@ -65,12 +69,15 @@ ol {
     border-style: outset;
     padding-right: 3%;
     padding-left: 3%;
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     text-align: center;
-    margin-right: 1%;
-
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right:2%
 }
+
+
 
 .weather {
     font-size: 18px;
