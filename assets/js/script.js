@@ -3,7 +3,7 @@ var dayIndex = 0;
 var previousDayEl =$("#previous-day");
 var nextDayEl =$("#next-day");
 var weather;
-  
+var modalText = $('#modal-text')
 var overlay = $('#overlay');
 var closeBtn = $('#close-modal');
 var searchBtn = $('#search-btn');
@@ -59,7 +59,7 @@ function findCurrentLocation(){
 
 function displayAddress(){
     fadeTitles()
-    document.getElementById('modal-text').textContent= searchInput.value + ' is not a valid address'
+    modalText.text(searchInput.value + ' is not a valid address')
 
         setTimeout(function(){
         weatherTitle.text('The Weather Near ' + searchInput.value)
@@ -93,7 +93,10 @@ function searchForAddress(){
 
     restaurantList.empty()
 
-    
+    if (results.filter((result) => result.rating) == ''){
+        modalText.text('No Restaurants Found in Area')
+        AppearModal()
+    } else {
     results
       .filter((result) => result.rating)
       .sort((a, b) => (a.rating > b.rating ? -1 : 1))
@@ -125,6 +128,7 @@ function searchForAddress(){
        }
        setTimeout(fadeIn, 100)
     })
+    }
 }
 
 
@@ -160,8 +164,7 @@ function AppearModal() {
 }
 function DissapearModal() {
     overlay.removeClass("flex").addClass("hidden");
-    restaurantLocation.text('Location Not Found')
-    weatherTitle.text('Location Not Found')
+    restaurantLocation.text('Error')
 }
 
 // retreives info from the weather api and then passes it to fill weather data...............
