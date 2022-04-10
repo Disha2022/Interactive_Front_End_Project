@@ -75,7 +75,6 @@ ol {
     text-align: center;
     background-color: white;
     margin-bottom: 1%;
-    color: white;
     margin-left: 2%;
     margin-right: 2%;
 }
@@ -91,10 +90,23 @@ ol {
     background-color: white;
 }
 
+.weather button {
+    display: inline;
+}
+
+#date {
+    display: initial;
+}
+
 .weather p {
     color: white;
     background-color: rgb(91, 210, 188);
     margin-right: 1%;
+}
+
+.disabled{
+    pointer-events: none;
+    visibility: hidden;
 }
 
 .foods {
