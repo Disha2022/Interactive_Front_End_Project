@@ -1,3 +1,9 @@
+
+var dayIndex = 0;
+var previousDayEl =$("#previous-day");
+var nextDayEl =$("#next-day");
+var weather;
+  
 var overlay = $('#overlay');
 var closeBtn = $('#close-modal');
 var searchBtn = $('#search-btn');
@@ -9,6 +15,7 @@ const places = document.getElementById('places')
 var restaurantList= $('#places')
 var searchInput = document.getElementById('user-search');
 var restaurantLocation = document.getElementById('restaurant-name')
+var weatherTitle =  document.getElementById('weather-title')
 
 var request ={
     location: {lat: 0, lng: 0},
@@ -27,6 +34,8 @@ function findCurrentLocation(){
           request.location.lng=position.coords.longitude
           searchForAddress()
           restaurantLocation.textContent= 'Restaurants Near My Current Location'
+          weatherTitle.textContent = 'Weather Near My Current Location'
+
        }
    )}
 }
@@ -34,6 +43,7 @@ function findCurrentLocation(){
 // adds address to modal and to Restaurant section
 
 function displayAddress(){
+    weatherTitle.textContent = 'The Weather Near ' + searchInput.value
     document.getElementById('modal-text').textContent= searchInput.value + ' is not a valid address'
     restaurantLocation.textContent = 'Restaurants Nearby: ' + searchInput.value
 }
@@ -74,7 +84,7 @@ function searchForAddress(){
         span.html("Rating: " + result.rating + "&#9734;");
         var button = $("<button></button>");
         button.attr("type", "button");
-        button.addClass("list-btn hover:scale-110");
+        button.addClass("list-btn hover:scale-150 duration-300");
         button.html("<img src='./assets/images/heart.png'></img>");
         button.click(function () {
           addPick(result.name);
@@ -140,10 +150,35 @@ var DisplayWeather = function (lat, long) {
     lat +
     "&lon=" +
     long +
-    "&exclude=hourly,daily,alerts,minutely&units=imperial&appid=ec93ec889e22ec6a9e1c57a53cc4c613";
+    "&exclude=hourly,alerts,minutely&units=imperial&appid=ec93ec889e22ec6a9e1c57a53cc4c613";
   var weather = fetch(apiAdress).then(function (response) {
     response.json().then(function (data) {
-      FillWeatherData(data.current);
+      weather = data;
+      FillWeatherData(weather.daily[0]);
+      previousDayEl.on("click",function(){
+        dayIndex--;
+
+        //if it moves from the last day to the second to last day reenable the other button
+        if(dayIndex==6)
+          nextDayEl.removeClass("disabled");
+        // if it is the first day disable this button
+        else if(dayIndex ==0)
+          previousDayEl.addClass("disabled");
+
+        FillWeatherData(weather.daily[dayIndex]);
+      });
+      nextDayEl.on("click",function(){
+        dayIndex++;
+
+                //if it moves from the first day to the second day reenable the other button
+                if(dayIndex==1)
+                previousDayEl.removeClass("disabled");
+              // if it is the last day disable this button
+              else if(dayIndex ==7)
+                nextDayEl.addClass("disabled");
+
+        FillWeatherData(weather.daily[dayIndex]);
+      });
     });
   });
 };
@@ -152,6 +187,8 @@ var DisplayWeather = function (lat, long) {
 var FillWeatherData = function (data) {
   var weatherEl = $("#myweather");
   dataField = weatherEl.children("p");
+  var date = new Date(data.dt*1000).toLocaleDateString("en-US");;
+  $("#date").text(date);
   //pick the correct cloud img.
   var cloudInfo = data.weather[0];
   var CloudEl = $("#cloud");
@@ -162,7 +199,7 @@ var FillWeatherData = function (data) {
     alt: cloudInfo.description,
   });
 
-  FillDataField(dataField[0], data.temp + String.fromCharCode(176) + "F");
+  FillDataField(dataField[0], data.temp.day + String.fromCharCode(176) + "F");
   FillDataField(dataField[1], data.wind_speed + " mph");
   FillDataField(dataField[2], data.humidity + "%");
 };
@@ -175,6 +212,7 @@ var FillDataField = function (element, data) {
     element.innerText = element.innerText.substring(0, numberLoc.index) + data;
   } else element.textContent += data;
 };
+
 
 // clear results
 function clearResults(){results=[]}
@@ -203,7 +241,7 @@ function showPickInList(name) {
   li.text(name);
   var button = $("<button>");
   button.attr("type", "button");
-  button.addClass("list-btn-2 ");
+  button.addClass("list-btn-2 hover:translate-y-0.5 hover:-translate-x-0.5 hover:scale-110 duration-300");
   button.html("<img src='./assets/images/delete.png'></img>");
   button.addClass("list-btn-3");
   button.click(function () {

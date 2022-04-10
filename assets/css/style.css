@@ -17,7 +17,7 @@
     align-items: left;
     /* margin-left: 2%; */
     color: rgb(38, 127, 132);
-    /* padding-top: 1%;    */
+   
 }
 
 #search form {
@@ -30,10 +30,13 @@
     padding-left: 1%;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
-    /* margin-bottom:0.05%; */
+    margin-right: 1%;
+     margin-bottom:0.05%;
     background-color: rgb(38, 127, 132);
     color: white;
 }
+
+
 
 .hero {
     display: flex;
@@ -74,12 +77,12 @@ ol {
     text-align: center;
     background-color: white;
     margin-bottom: 1%;
-    color: white;
     margin-left: 2%;
     margin-right: 2%;
 }
 
 .weather h2 {
+    font-size: 120%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(38, 127, 132);
     padding-bottom: 8%;
@@ -89,43 +92,53 @@ ol {
     background-color: white;
 }
 
+.weather button {
+    display: inline;
+}
+
+#date {
+    display: initial;
+}
+
 .weather p {
     color: white;
     background-color: rgb(91, 210, 188);
     margin-right: 1%;
 }
 
+.disabled{
+    pointer-events: none;
+    visibility: hidden;
+}
+
 .foods {
     font-size: 18px;
     text-align: center;
-    margin-bottom: 1%;
+    
     color: white;
     padding-right: 1%;
     margin-right: 0.5%;
     margin-left: 1%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    margin-left: 1%;
 }
 
-/* .foods ul li {
-    
-    background-color: rgb(91, 210, 188);
-    margin-bottom: 1%;
-    margin-left: 1%; */
 
-/* } */
-
-#places {
+/* #places {
     font-size: 80%;
     font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 1%;
-}
+    margin-bottom: 2%;
+} */
 
 .foods h2 {
+    font-size: 120%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(38, 127, 132);
     padding-bottom: 0.5%;
     margin-bottom: 1%;
     text-align: center;
-    border: rgb(126, 158, 213);
+ 
 }
 
 .foodlove {
@@ -141,6 +154,7 @@ ol {
 }
 
 .foodlove h2 {
+    font-size: 120%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(38, 127, 132);
     padding-bottom: 9%;
@@ -186,11 +200,6 @@ ol {
     margin: auto;
 }
 
-ul li .list-btn-2 {
-    /* font-size: small; */
-    /* background-color: rgb(241 251 0); */
-    /* color: black; */
-}
 
 @media only screen and (max-width:600px){
     #search{
