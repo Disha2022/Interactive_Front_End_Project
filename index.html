@@ -20,9 +20,11 @@
         <!-----Form element------->
         <div class="searchfood col-span-2">
             <form id="search-form">
-                <input type="text" id='user-search' class="input" id="forminput" placeholder="Enter your address" />
-                <button type="submit" class="rounded" id="search-btn">Search</button>
-                <button type="button" class="rounded" id="location-btn">Current Location</button>
+                <input type="text" id='user-search' class="input max-h-8" id="forminput" placeholder="Enter your address" />
+                <button type="submit" class="rounded mr-0.5 text-sm rounded-full
+                hover:translate-y-2 hover:scale-110 hover:opacity-50 duration-300" id="search-btn">Search</button>
+                <button type="button" class="rounded text-xs ml-0.5 rounded-full
+                hover:translate-y-2 hover:translate-x-1 hover:scale-110 hover:opacity-50 duration-300" id="location-btn">Use Current Location</button>
             </form>
             <!-- </div> -->
     </header>
@@ -58,7 +60,7 @@
 
         <!----------weather------->
         <div class="weather shadow-lg" id="myweather">
-            <h2>Today's weather!</h2>
+            <h2 id="weather-title">Today's weather!</h2>
             <div> Date</div>
             <img id="cloud" src="http://openweathermap.org/img/wn/10d@2x.png" alt="" />
             <p> Temperature: </p>
