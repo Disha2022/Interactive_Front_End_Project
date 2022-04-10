@@ -52,6 +52,10 @@
     margin-bottom: 1%;
 }
 
+#overlay{
+    z-index: 9999;
+}
+
 .searchfood {
     align-items: right;
     margin-bottom: 1%;

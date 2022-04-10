@@ -159,7 +159,9 @@ function AppearModal() {
   overlay.removeClass("hidden").addClass("flex");
 }
 function DissapearModal() {
-  overlay.removeClass("flex").addClass("hidden");
+    overlay.removeClass("flex").addClass("hidden");
+    restaurantLocation.text('Location Not Found')
+    weatherTitle.text('Location Not Found')
 }
 
 // retreives info from the weather api and then passes it to fill weather data...............
