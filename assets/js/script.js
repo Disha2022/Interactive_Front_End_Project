@@ -74,18 +74,27 @@ function searchForAddress(){
         span.html("Rating: " + result.rating + "&#9734;");
         var button = $("<button></button>");
         button.attr("type", "button");
-        button.addClass("list-btn");
+        button.addClass("list-btn hover:scale-110");
         button.html("<img src='./assets/images/heart.png'></img>");
         button.click(function () {
           addPick(result.name);
         });
-
+        var ol = $('#places')
         var li = $("<li></li>");
+        ol.addClass('ease-in-out transition-all')
+        li.addClass('ease-in-out opacity-0 transition-all -translate-y-5 scale-0')
         li.text(result.name + " - ");
 
         li.append(span);
         li.append(button);
         $("#places").append(li);
+       function fadeIn(){
+        ol.removeClass('opacity-0')
+        ol.addClass('opacity-100 duration-700')
+        li.removeClass('-translate-y-5 scale-0 opacity-0')
+        li.addClass('translate-y-0 opacity-100 scale-100 duration-1000')
+       }
+       setTimeout(fadeIn, 100)
     })
 }
 
