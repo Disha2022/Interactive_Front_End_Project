@@ -14,8 +14,8 @@ var locationBtn= $("#location-btn");
 const places = document.getElementById('places')
 var restaurantList= $('#places')
 var searchInput = document.getElementById('user-search');
-var restaurantLocation = document.getElementById('restaurant-name')
-var weatherTitle =  document.getElementById('weather-title')
+var restaurantLocation = $('#restaurant-name')
+var weatherTitle =  $('#weather-title')
 
 var request ={
     location: {lat: 0, lng: 0},
@@ -25,6 +25,20 @@ var request ={
 
 var results = [];
 
+function fadeTitles(){
+    restaurantLocation.removeClass('duration-1000')
+    weatherTitle.removeClass('duration-1000')
+    restaurantLocation.addClass('opacity-0 transition-all duration-100')
+    weatherTitle.addClass('opacity-0 transition-all duration-100')
+
+    setTimeout(function(){
+        weatherTitle.addClass('duration-1000')
+        restaurantLocation.addClass('duration-1000')
+        restaurantLocation.removeClass('opacity-0')
+        weatherTitle.removeClass('opacity-0')
+    }, 1000)
+}
+
 // searches for address by location
 function findCurrentLocation(){
     if (navigator.geolocation){
@@ -33,8 +47,9 @@ function findCurrentLocation(){
           request.location.lat=position.coords.latitude
           request.location.lng=position.coords.longitude
           searchForAddress()
-          restaurantLocation.textContent= 'Restaurants Near My Current Location'
-          weatherTitle.textContent = 'Weather Near My Current Location'
+          fadeTitles()
+          restaurantLocation.text('Restaurants Near My Current Location')
+          weatherTitle.text('Weather Near My Current Location')
 
        }
    )}
@@ -43,9 +58,13 @@ function findCurrentLocation(){
 // adds address to modal and to Restaurant section
 
 function displayAddress(){
-    weatherTitle.textContent = 'The Weather Near ' + searchInput.value
+    fadeTitles()
     document.getElementById('modal-text').textContent= searchInput.value + ' is not a valid address'
-    restaurantLocation.textContent = 'Restaurants Nearby: ' + searchInput.value
+
+        setTimeout(function(){
+        weatherTitle.text('The Weather Near ' + searchInput.value)
+        restaurantLocation.text('Restaurants Nearby: ' + searchInput.value)
+        }, 500)
 }
 
 
