@@ -110,7 +110,7 @@ function searchForAddress(){
         });
         var ol = $('#places')
         var li = $("<li></li>");
-        ol.addClass('ease-in-out transition-all')
+        ol.addClass('ease-in-out transition-all opacity-0')
         li.addClass('ease-in-out opacity-0 transition-all -translate-y-5 scale-0')
         li.text(result.name + " - ");
 
