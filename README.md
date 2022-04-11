@@ -18,7 +18,6 @@ Create a website that displays a list of nearby restaurant for a given location 
 *HTML  
 *CSS  
 *Tailwind 
-* Bootstrap
 *JQuery  
 *Open weather one call api  
 https://openweathermap.org/api/one-call-api  
@@ -33,13 +32,14 @@ https://developers.google.com/maps/documentation/javascript/places
 ## Procedure
 
 1. Initialized html, css and JavaScript files.
-2. Created html structure and css for main header.
+2. Created index.html for website structure and css for main header.
+3. Used google API to 
 
 
 ## Demo
 The following image and Gif demonstrates the application functionality:
-![Front End Project Gif.](./assets/images/restaurants.gif)
+![Front End Project Gif.](./assets/images/EveningEats.gif)
 
-![Restaurant Finder demo](./assets/images/restaurants.png)
+![Restaurant Finder demo](./assets/images/EveningEats.png)
 ## Contributions
 Made by Disha Barua, Ethan Cahill, and Christian Foote
