@@ -61,10 +61,18 @@
     margin-bottom: 1%;
 }
 
-
-
-ol {
+#places li {
+    font-size: 80%;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(91, 210, 188);
+    margin-bottom: 1%;
+    margin-left: 1%;
+    padding-left: 1%;
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+   
 }
 
 
@@ -84,7 +92,6 @@ ol {
 
 
 .weather {
-    font-size: 18px;
     text-align: center;
     background-color: white;
     margin-bottom: 1%;
@@ -115,6 +122,7 @@ ol {
     color: white;
     background-color: rgb(91, 210, 188);
     margin-right: 1%;
+    margin-bottom: 2%;
 }
 
 .disabled{
@@ -136,14 +144,8 @@ ol {
 }
 
 
-/* #places {
-    font-size: 80%;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 2%;
-} */
 
 .foods h2 {
-    font-size: 120%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(38, 127, 132);
     padding-bottom: 0.5%;
@@ -165,7 +167,6 @@ ol {
 }
 
 .foodlove h2 {
-    font-size: 120%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(38, 127, 132);
     padding-bottom: 9%;
@@ -178,7 +179,7 @@ ol {
     font-size: 80%;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(91, 210, 188);
-    margin-bottom: 1%;
+    margin-bottom: 2%;
     margin-left: 2%;
     color: white;
     display: flex;
